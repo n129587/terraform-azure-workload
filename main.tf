@@ -30,7 +30,6 @@ module "akv" {
   akv_name = var.akv_name
   enabled_disk_encryption = var.enabled_disk_encryption
   purge_protection_enabled = var.purge_protection_enabled
-  resource_group_name = module.rsg.output.resource_group_name
   sku_name = var.sku_name
   soft_delete_retention_days = var.soft_delete_retention_days
   
