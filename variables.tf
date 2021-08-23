@@ -1,7 +1,7 @@
 # Azure resource group
 variable "resource_group_name" {
   type = string
-  description = "(Required) Resouce group name"
+  description = "(Required) Resource group name"
 }
 
 variable "location" {
