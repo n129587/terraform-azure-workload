@@ -25,7 +25,7 @@ module "rsg" {
 
 module "akv" {
   source  = "app.terraform.io/georgevazj-lab/akv/azure"
-  version = "0.0.14"
+  version = "0.0.15"
 
   akv_name = var.akv_name
   location = module.rsg.resource_group_location
