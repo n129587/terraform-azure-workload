@@ -25,9 +25,10 @@ module "rsg" {
 
 module "akv" {
   source  = "app.terraform.io/georgevazj-lab/akv/azure"
-  version = "0.0.12"
+  version = "0.0.13"
 
   akv_name = var.akv_name
+  location = module.rsg.resource_group_location
   enabled_disk_encryption = var.enabled_disk_encryption
   purge_protection_enabled = var.purge_protection_enabled
   sku_name = var.sku_name
@@ -37,9 +38,10 @@ module "akv" {
 
 module "sta" {
   source  = "app.terraform.io/georgevazj-lab/sta/azure"
-  version = "0.0.8"
+  version = "0.0.9"
 
   sta_name = var.sta_name
+  location = module.rsg.resource_group_location
   account_replication_type = var.account_replication_type
   account_tier = var.account_tier
   environment_tag = var.environment_tag
