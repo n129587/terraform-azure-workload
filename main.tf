@@ -13,8 +13,6 @@ provider "azurerm" {
   }
 }
 
-data "azurerm_client_config" "current" {}
-
 # Modules
 module "rsg" {
   source  = "app.terraform.io/georgevazj-lab/rsg/azure"
@@ -37,9 +35,6 @@ module "akv" {
   sku_name = var.sku_name
   soft_delete_retention_days = var.soft_delete_retention_days
   
-  depends_on = [
-    module.rsg
-  ]
 }
 
 module "sta" {
@@ -53,7 +48,4 @@ module "sta" {
   account_tier = var.account_tier
   environment_tag = var.environment_tag
 
-  depends_on = [
-    module.rsg
-  ]
 }
