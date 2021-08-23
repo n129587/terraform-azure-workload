@@ -40,7 +40,6 @@ module "sta" {
   source  = "app.terraform.io/georgevazj-lab/sta/azure"
   version = "0.0.4"
 
-  sta_location = module.rsg.outputs.resource_group_location
   sta_name = var.sta_name
   account_replication_type = var.account_replication_type
   account_tier = var.account_tier
