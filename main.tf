@@ -14,11 +14,22 @@ provider "azurerm" {
 }
 
 # Modules
+module "builder" {
+  source  = "app.terraform.io/georgevazj-lab/builder/azure"
+  version = "0.0.1"
+
+  sequence_number = var.sequence_number
+  workload_acronym = var.workload_acronym
+  location = var.location
+  environment = var.env_acronym
+  entity = var.entity
+}
+
 module "rsg" {
   source  = "app.terraform.io/georgevazj-lab/rsg/azure"
   version = "0.0.3"
 
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.builder.resource_group
   resource_group_location = var.location
   description = "Resource group from Terraform Cloud"
 }
@@ -27,7 +38,7 @@ module "akv" {
   source  = "app.terraform.io/georgevazj-lab/akv/azure"
   version = "0.0.15"
 
-  akv_name = var.akv_name
+  akv_name = module.builder.akv_name
   location = module.rsg.resource_group_location
   enabled_disk_encryption = var.enabled_disk_encryption
   purge_protection_enabled = var.purge_protection_enabled
@@ -40,7 +51,7 @@ module "sta" {
   source  = "app.terraform.io/georgevazj-lab/sta/azure"
   version = "0.0.9"
 
-  sta_name = var.sta_name
+  sta_name = module.builder.sta_name
   location = module.rsg.resource_group_location
   account_replication_type = var.account_replication_type
   account_tier = var.account_tier

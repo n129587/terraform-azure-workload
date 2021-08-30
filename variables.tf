@@ -1,7 +1,30 @@
 # Azure resource group
+variable "env_acronym" {
+  type = string
+  description = "(Required) Environment acronym. Default: d1"
+  default = "d1"
+}
+
+variable "entity" {
+  type = string
+  description = "(Required) Entity acronym"
+  default = "san"
+}
+
 variable "resource_group_name" {
   type = string
   description = "(Required) Resource group name"
+}
+
+variable "sequence_number" {
+  type = string
+  description = "(Required) Resource sequence number"
+  default = "001"
+}
+
+variable "workload_acronym" {
+  type = string
+  description = "(Required) Workload acronym."
 }
 
 variable "location" {
@@ -16,11 +39,6 @@ variable "description" {
 }
 
 # Azure Key vault
-variable "akv_name" {
-  type = string
-  description = "(Required) Key Vault name"
-}
-
 variable "enabled_disk_encryption" {
   type = bool
   description = "Enable disk encryption"
@@ -46,11 +64,6 @@ variable "sku_name" {
 }
 
 # Azure storage account
-variable "sta_name" {
-  type = string
-  description = "(Required) Storage account name"
-}
-
 variable "account_tier" {
   type = string
   description = "(Required) Defines the Tier to use for this storage account. Valid options are Standard and Premium"
