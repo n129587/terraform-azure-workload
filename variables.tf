@@ -11,11 +11,6 @@ variable "entity" {
   default = "san"
 }
 
-variable "resource_group_name" {
-  type = string
-  description = "(Required) Resource group name"
-}
-
 variable "sequence_number" {
   type = string
   description = "(Required) Resource sequence number"
