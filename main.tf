@@ -15,7 +15,7 @@ provider "azurerm" {
 
 # Modules
 module "builder" {
-  source  = "app.terraform.io/georgevazj-lab/builder/azure"
+  source  = "app.terraform.io/sanesp-poc/builder/azure"
   version = "0.0.1"
 
   sequence_number = var.sequence_number
@@ -26,7 +26,7 @@ module "builder" {
 }
 
 module "rsg" {
-  source  = "app.terraform.io/georgevazj-lab/rsg/azure"
+  source  = "app.terraform.io/sanesp-poc/rsg/azure"
   version = "0.0.3"
 
   resource_group_name = module.builder.resource_group
@@ -35,7 +35,7 @@ module "rsg" {
 }
 
 module "akv" {
-  source  = "app.terraform.io/georgevazj-lab/akv/azure"
+  source  = "app.terraform.io/sanesp-poc/akv/azure"
   version = "0.0.15"
 
   akv_name = module.builder.akv_name
@@ -48,7 +48,7 @@ module "akv" {
 }
 
 module "sta" {
-  source  = "app.terraform.io/georgevazj-lab/sta/azure"
+  source  = "app.terraform.io/sanesp-poc/sta/azure"
   version = "0.0.9"
 
   sta_name = module.builder.sta_name
