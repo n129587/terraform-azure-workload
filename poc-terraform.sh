@@ -19,7 +19,7 @@ TOKEN="$3"
 # 2. Create the File for Upload
 
 UPLOAD_FILE_NAME="./content-$(date +%s).tar.gz"
-tar -zcvf "$UPLOAD_FILE_NAME" -C "$CONTENT_DIRECTORY" .
+tar -zcvf "$UPLOAD_FILE_NAME" -C "$CONTENT_DIRECTORY"
 
 # 3. Look Up the Workspace ID
 
@@ -43,7 +43,7 @@ UPLOAD_URL=($(curl \
 
 # 5. Upload the Configuration Content File
 
-curl \
+#curl \
   --header "Content-Type: application/octet-stream" \
   --request PUT \
   --data-binary @"$UPLOAD_FILE_NAME" \
@@ -51,5 +51,5 @@ curl \
 
 # 6. Delete Temporary Files
 
-rm "$UPLOAD_FILE_NAME"
-rm ./create_config_version.json
+ #rm "$UPLOAD_FILE_NAME"
+ #rm ./create_config_version.json
