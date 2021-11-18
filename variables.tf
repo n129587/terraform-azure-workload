@@ -14,7 +14,6 @@ variable "entity" {
 variable "sequence_number" {
   type = string
   description = "(Required) Resource sequence number"
-  default = "001"
 }
 
 variable "workload_acronym" {
