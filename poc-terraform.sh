@@ -33,20 +33,20 @@ WORKSPACE_ID=($(curl \
 
 # 4. Create vars
 
-echo '{"data":{"type":"vars","attributes":{"key":"sequence_number","value":"004","description":"sequence_number","category":"terraform","hcl":false,"sensitive":false}}}' > ./var_payload.json
+#echo '{"data":{"type":"vars","attributes":{"key":"sequence_number","value":"004","description":"sequence_number","category":"terraform","hcl":false,"sensitive":false}}}' > ./var_payload.json
 
-curl \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/vnd.api+json" \
-  --request POST \
-  --data @var_payload.json \
-  https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars
+#curl \
+#  --header "Authorization: Bearer $TOKEN" \
+#  --header "Content-Type: application/vnd.api+json" \
+#  --request POST \
+#  --data @var_payload.json \
+#  https://app.terraform.io/api/v2/workspaces/$WORKSPACE_ID/vars
 
 # 5. Create a New Configuration Version
 
-echo '{"data":{"type":"configuration-versions"}}' > ./create_config_version.json
+#echo '{"data":{"type":"configuration-versions"}}' > ./create_config_version.json
 
-UPLOAD_URL=($(curl \
+#UPLOAD_URL=($(curl \
   --header "Authorization: Bearer $TOKEN" \
   --header "Content-Type: application/vnd.api+json" \
   --request POST \
@@ -56,7 +56,7 @@ UPLOAD_URL=($(curl \
 
 # 6. Upload the Configuration Content File
 
-curl \
+#curl \
   --header "Content-Type: application/octet-stream" \
   --request PUT \
   --data-binary @"$UPLOAD_FILE_NAME" \
@@ -64,6 +64,6 @@ curl \
 
 # 7. Delete Temporary Files
 
- rm "$UPLOAD_FILE_NAME"
+ #rm "$UPLOAD_FILE_NAME"
  rm ./create_config_version.json
  rm ./var_payload.json
